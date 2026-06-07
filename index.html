@@ -23,18 +23,20 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-media">
+      <img src="assets/biban23.jpg" alt="" class="hero-bg" />
+      <div class="hero-scrim"></div>
+    </div>
     <div class="hero-inner">
       <p class="hero-eyebrow">Events Director · Live Entertainment Producer</p>
       <h1 class="hero-name">Jad Assaf</h1>
-      <p class="hero-sub">7+ years delivering high-stakes events for Saudi Arabia's most demanding institutional clients.</p>
-      <div class="hero-stats">
-        <div class="hs"><span class="hs-num">9,000+</span><span class="hs-label">Attendees at a single event</span></div>
-        <div class="hs-divider"></div>
-        <div class="hs"><span class="hs-num">100+</span><span class="hs-label">Countries represented</span></div>
-        <div class="hs-divider"></div>
-        <div class="hs"><span class="hs-num">KSA</span><span class="hs-label">Market specialist</span></div>
-      </div>
-      <a href="#work" class="btn">View Work</a>
+      <p class="hero-sub">Seven years staging the high-stakes events that Saudi Arabia's most demanding institutions trust with their most important moments.</p>
+      <a href="#work" class="btn">View the Work</a>
+    </div>
+    <div class="hero-statbar">
+      <div class="hs"><span class="hs-num">9,000+</span><span class="hs-label">Attendees, single event</span></div>
+      <div class="hs"><span class="hs-num">100+</span><span class="hs-label">Countries represented</span></div>
+      <div class="hs"><span class="hs-num">7+</span><span class="hs-label">Years in the Gulf</span></div>
     </div>
   </section>
 
@@ -44,30 +46,26 @@
       <div class="about-photo-wrap">
         <div class="about-photo">
           <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="placeholder-avatar">
-            <circle cx="100" cy="85" r="50" fill="#c8a96e" opacity="0.4"/>
-            <ellipse cx="100" cy="200" rx="72" ry="50" fill="#c8a96e" opacity="0.25"/>
+            <circle cx="100" cy="85" r="50" fill="#8a8a92" opacity="0.3"/>
+            <ellipse cx="100" cy="200" rx="72" ry="50" fill="#8a8a92" opacity="0.18"/>
           </svg>
           <span class="photo-hint">Photo coming soon</span>
         </div>
       </div>
       <div class="about-text">
-        <h2 class="section-title">The Director Behind the Vision</h2>
-        <p>Jad Assaf runs events that governments and institutions trust with their most important moments. His clients — SAMA, the National Development Fund, BlackRock, the Ministry of Finance, CMA — don't give second chances. He hasn't needed one.</p>
-        <p>He specialises in end-to-end event operations: digital platforms, registration systems, VIP protocol, content production, and real-time execution. Fluent in Arabic, English, and French. Deep in the Gulf market.</p>
-        <div class="competencies">
-          <span>End-to-End Operations</span>
-          <span>VIP & Protocol</span>
-          <span>Digital Platforms</span>
-          <span>Registration Systems</span>
-          <span>Audience Management</span>
-          <span>Live Production</span>
-          <span>Stakeholder Relations</span>
-          <span>Budget & ROI</span>
-        </div>
-        <div class="about-clients">
-          <p class="clients-label">Trusted by</p>
-          <div class="client-tags">
-            <span>SAMA</span><span>NDF</span><span>BlackRock</span><span>Ministry of Finance</span><span>CMA</span><span>Monsha'at</span><span>Social Development Bank</span><span>Deloitte</span>
+        <p class="about-eyebrow">About</p>
+        <h2 class="section-title">The director behind the vision</h2>
+        <p class="about-lead">Jad Assaf runs events that governments and institutions trust with their most important moments. His clients don't give second chances. He hasn't needed one.</p>
+        <p>He specialises in end-to-end event operations — digital platforms, registration systems, VIP protocol, content production, and real-time execution. Fluent in Arabic, English, and French. Deep in the Gulf market.</p>
+
+        <div class="about-meta">
+          <div class="meta-block">
+            <span class="meta-label">Specialties</span>
+            <p class="meta-line">End-to-End Operations · VIP &amp; Protocol · Digital Platforms · Registration Systems · Audience Management · Live Production · Stakeholder Relations · Budget &amp; ROI</p>
+          </div>
+          <div class="meta-block">
+            <span class="meta-label">Trusted by</span>
+            <p class="meta-line">SAMA · National Development Fund · BlackRock · Ministry of Finance · CMA · Monsha'at · Social Development Bank · Deloitte</p>
           </div>
         </div>
       </div>
@@ -76,18 +74,18 @@
 
   <!-- WORK -->
   <section class="work" id="work">
-    <div class="container work-header">
-      <h2 class="section-title">Selected Work</h2>
+    <div class="container work-header reveal">
+      <p class="about-eyebrow">Selected Work</p>
+      <h2 class="section-title">Projects</h2>
     </div>
-    <div class="projects-grid">
+
+    <div class="container projects-grid">
 
       <!-- 1. MOMENTUM -->
       <article class="project-card" data-project="momentum">
         <div class="card-img">
           <img src="assets/momentum.jpg" alt="MOMENTUM Conference" />
-          <div class="card-overlay">
-            <span class="play-btn">&#9654;</span>
-          </div>
+          <div class="card-overlay"><span class="play-btn">&#9654;</span></div>
         </div>
         <div class="card-info">
           <div class="card-meta"><span class="card-tag">Conference</span><span class="card-date">Dec 2025</span></div>
@@ -258,6 +256,26 @@
 
   <!-- PROJECT DATA -->
   <script>
+    // Sticky nav: solid background once scrolled past the hero
+    const navEl = document.querySelector('.nav');
+    const onScroll = () => navEl.classList.toggle('scrolled', window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Scroll-reveal motion
+    const revealEls = document.querySelectorAll('.reveal, .project-card');
+    revealEls.forEach(el => el.classList.add('pre-reveal'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          e.target.style.transitionDelay = (e.target.classList.contains('project-card') ? (i % 3) * 80 : 0) + 'ms';
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(el => io.observe(el));
+
     const projects = {
       momentum: {
         title: "MOMENTUM",
@@ -433,7 +451,7 @@
     };
 
     // Card click → open modal
-    document.querySelectorAll('.project-card').forEach(card => {
+    document.querySelectorAll('.project-card, .featured').forEach(card => {
       card.addEventListener('click', () => {
         const key = card.dataset.project;
         const p = projects[key];
