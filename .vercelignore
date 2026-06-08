@@ -1,3 +1,7 @@
 *.pdf
+*.pptx
 .claude
 .DS_Store
+/*.mp4
+/*.mov
+Screenshot*.png
