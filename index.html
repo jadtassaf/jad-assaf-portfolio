@@ -277,13 +277,8 @@
       <!-- 15. Darin Madani -->
       <article class="project-card" data-project="darin">
         <div class="card-img">
-          <div class="card-placeholder">
-            <span class="ph-mono">DM</span>
-            <span class="ph-client">Darin Madani · Jeddah</span>
-            <span class="ph-name">Boutique Opening</span>
-            <span class="ph-note">Private launch · video coming soon</span>
-          </div>
-          <div class="card-overlay"><span class="card-view">View Project</span></div>
+          <img src="assets/darin.jpg" alt="Darin Madani Boutique Opening" />
+          <div class="card-overlay"><span class="play-btn">&#9654;</span></div>
         </div>
         <div class="card-info">
           <div class="card-meta"><span class="card-tag">Fashion &amp; Lifestyle</span></div>
@@ -581,7 +576,7 @@
           "Directed fashion-show production, model and backstage management, entertainment, DJ programming, and AV.",
           "Primary client contact — translated the brand's vision into a seamless two-day luxury experience."
         ],
-        video: null, mp4: null, image: null
+        video: null, mp4: "assets/darin.mp4", image: "assets/darin.jpg", portrait: true
       }
     };
 
@@ -592,7 +587,7 @@
       const mediaHTML = p.video
         ? `<div class="modal-video"><iframe src="${p.video}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`
         : p.mp4
-          ? `<div class="modal-video"><video src="${p.mp4}" ${p.image ? `poster="${p.image}"` : ''} controls autoplay muted loop playsinline></video></div>`
+          ? `<div class="modal-video${p.portrait ? ' portrait' : ''}"${p.portrait && p.image ? ` style="--bg:url('${p.image}')"` : ''}><video src="${p.mp4}" ${p.image ? `poster="${p.image}"` : ''} controls autoplay muted loop playsinline></video></div>`
           : p.image
             ? `<div class="modal-img-full"><img src="${p.image}" alt="${p.title}" /></div>`
             : '';
